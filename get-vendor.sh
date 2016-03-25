@@ -6,7 +6,7 @@ mkdir -p vendor
 
 if test ! -d vendor/shadowsocks-go-1.1.4; then
   echo "getting shadowsocks-go-1.1.4..."
-  curl -Ls https://github.com/shadowsocks/shadowsocks-go/archive/1.1.4.tar.gz | tar -C vendor -xzf -
+  curl -Ls https://github.com/shadowsocks/shadowsocks-go/archive/1.1.4.tar.gz | tar -C vendor -xzf - shadowsocks-go-1.1.4/shadowsocks
 fi
 
 if test ! -d vendor/chacha20; then
