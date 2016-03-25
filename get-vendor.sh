@@ -6,6 +6,8 @@ SHADOWSOCKS_GO_COMMIT=1.1.4
 CHACHA20_COMMIT=ec07b4f69a3f70b1dd2a8ad77230deb1ba5d6953
 CRYPTO_COMMIT=c197bcf24cde29d3f73c7b4ac6fd41f4384e8af6
 
+curl -Ls https://github.com/shadowsocks/shadowsocks-go/raw/$SHADOWSOCKS_GO_COMMIT/cmd/shadowsocks-local/local.go -o shadowsocks-local.go
+
 rm -rf vendor
 mkdir -p vendor
 
@@ -14,6 +16,9 @@ if test ! -d vendor/shadowsocks-go-$SHADOWSOCKS_GO_COMMIT; then
   curl -Ls https://github.com/shadowsocks/shadowsocks-go/archive/$SHADOWSOCKS_GO_COMMIT.tar.gz | \
     tar -C vendor -xvzf - shadowsocks-go-$SHADOWSOCKS_GO_COMMIT/shadowsocks
 fi
+
+grep --include "*.go" -lrF "github.com/shadowsocks/shadowsocks-go" . | \
+  xargs sed -i "" "s,github.com/shadowsocks/shadowsocks-go,github.com/caiguanhao/shadowsocks-local/vendor/shadowsocks-go-$SHADOWSOCKS_GO_COMMIT,"
 
 if test ! -d vendor/chacha20-$CHACHA20_COMMIT; then
   echo "getting chacha20-$CHACHA20_COMMIT..."
