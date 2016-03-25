@@ -1,0 +1,8 @@
+{
+  "server": "jp5.0bad.com",
+  "server_port": 29546,
+  "local_port": 1080,
+  "password": "xxxxxxxxxxxxxxxxxxxx",
+  "method": "aes-128-cfb",
+  "timeout": 600
+}
